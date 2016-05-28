@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option py_generic_services = true;
+
+service QrLink {
+	// A service that provide qr url
+	rpc GetlimitQrLink (QrLinkRequest) returns (QrLinkReply) {}
+
+	rpc GetTempQrLink (QrLinkRequest) returns (QrLinkReply) {}
+}
+
+message QrLinkRequest {
+	string tmp_ac = 1;
+	string h_name = 2;
+	string c_name = 3;
+}
+
+
+message QrLinkReply {
+	bool status = 1;		//status = True,then qr_link = url,else qr_link= "error"
+	string qr_link = 2;		
+}
